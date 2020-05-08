@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">点我获取所有人</button>
+  <script type="text/javascript">
+    let btn = document.getElementById('btn')
+    btn.onclick = ()=>{
+      //实例化xhr
+      let xhr = new XMLHttpRequest()
+      //绑定监听
+      xhr.responseType = 'json'   //如果返回的json数据能够自动解析
+      // xhr.timeout = 2000  //设置超时时间 如果超过两秒 则不需要返回数据
+      // xhr.ontimeout = ()=>{
+      //   console.log('服务器请求超时~~~~')
+      // }
+      xhr.onerror = ()=>{
+        console.log('网络错误~~~')
+      }
+      xhr.onreadystatechange = ()=>{
+        if(xhr.readyState === 4 && xhr.status === 200){
+          console.log(xhr.response,xhr.statusText);
+          console.log(xhr.getResponseHeader('Date'))
+          console.log(xhr.getAllResponseHeaders())
+        }
+      }
+      // xhr.onload = ()=>{
+      //   console.log(xhr.response)
+      // }
+      //调用open
+      xhr.open('get','http://localhost:8002/get_persons')
+      //发送请求
+      xhr.send()
+    }
+  </script>
+</body>
+</html>

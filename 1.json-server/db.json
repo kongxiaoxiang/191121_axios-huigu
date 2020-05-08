@@ -1,0 +1,44 @@
+{
+  "teachers": [
+    {
+      "name": "zhiyuan",
+      "age": "15",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "渊哥",
+      "age": 19
+    },
+    {
+      "id": 3,
+      "name": "海峰",
+      "age": 20
+    },
+    {
+      "id": 4,
+      "name": "强",
+      "age": 21
+    },
+    {
+      "name": "xiaokong",
+      "age": "18",
+      "id": 5
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "xiaozhang",
+      "age": 22
+    },
+    {
+      "id": 2,
+      "name": "xiaozhao",
+      "age": 23
+    }
+  ],
+  "school": {
+    "name": "atguigu"
+  }
+}

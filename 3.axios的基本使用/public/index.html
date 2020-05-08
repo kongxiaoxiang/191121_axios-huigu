@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript" src="./axios.min.js"></script>
+  <button id="btn1">获取所有人信息</button> <br>
+  <button id="btn2">根据id获取一个人信息</button> <br>
+  <button id="btn3">添加一个人</button> <br>
+  <button id="btn4">修改一个人</button> <br>
+  <button id="btn5">删除一个人</button>
+  <script type="text/javascript">
+    let btn1 = document.getElementById('btn1')
+    let btn2 = document.getElementById('btn2')
+    let btn3 = document.getElementById('btn3')
+    let btn4 = document.getElementById('btn4')
+    let btn5 = document.getElementById('btn5')
+    axios.defaults.baseURL = 'http://localhost:3800'
+
+    btn1.onclick = ()=>{
+      //完整版
+      // axios({
+      //   url:'/get_persons',
+      //   method:'get'
+      // }).then(
+        //response是经过axios包装后的一个对象，服务器真正的数据在response.data中
+      //   response => {console.log('成功了',response.data)},
+      //   error => {console.log('失败了',error)}
+      // )
+      //精简版
+      axios.get('/get_persons').then(
+        response => {console.log('成功咯~',response.data)},
+        error => {console.log('失败咯~',error)}
+      )
+    }
+    btn2.onclick = ()=>{
+      // axios({
+      //   url:'/get_person_byid',
+      //   method:'get',
+      //   params:{id:1} //携带query参数
+      // }).then(
+      //   response => {console.log('成功了',response.data)},
+      //   error => {console.log('shibailo',error)}
+      // )
+      //精简版
+      axios.get('/get_person_byid',{params:{id:1}}).then(
+        response => console.log('成功咯~',response.data),
+        error => console.log('失败咯',error)
+      )
+    }
+    btn3.onclick = ()=>{
+      // axios({
+      //   url:'/person',
+      //   method:'post',
+      //   data:{name:'xiaokong',age:18} //data携带请求体参数，默认采用json编码
+      //   // data:'name=xiaobei&age=20'  //data携带请求体参数，采用urlencoded
+      // }).then(
+      //   response => {console.log('成功咯',response.data)},
+      //   error => {console.log('失败咯',error)}
+      // )
+      //精简版
+      axios.post('/person',{name:'xiaoxiang',age:18}).then(
+        response => {console.log('成功了',response.data)},
+        error => {console.log('失败咯'),error}
+      )
+    }
+    btn4.onclick = ()=>{
+      // axios({
+      //   url:'/person',
+      //   method:'put',
+      //   //data:{id:3,name:'xiaohong',age:5}
+      //   data:'id=2&name=xiaoleyan&age=18'
+      // }).then(
+      //   response => {console.log('成功了',response.data)},
+      //   error => {console.log('失败咯'),error}
+      // )
+      //精简版
+      axios.put('/person',{id:4,name:'rookie',age:20}).then(
+        response => {console.log('成功了',response.data)},
+        error => {console.log('失败了',error)}
+      )
+    }
+    btn5.onclick = ()=>{
+      // axios({
+      //   url:'/person/1',
+      //   method:'delete',
+      //   // params:{id:1}
+      // }).then(
+      //   response => {console.log('success',response.data)},
+      //   error => {console.log('fail',error)}
+      // )
+      //精简版
+      axios.delete('/person/2').then(
+        response => {console.log('success',response.data)},
+        error => {console.log('fail'),error}
+      )
+    }
+  </script>
+</body>
+</html>
